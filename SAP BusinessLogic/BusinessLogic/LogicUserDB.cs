@@ -1,4 +1,4 @@
-﻿using SAP_Model.DAL;
+﻿using SAP_Model.Data.DAL;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,10 +9,10 @@ namespace SAP_BusinessLogic.BusinessLogic
     public class LogicUserDB
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        public readonly RespositoryContext context;
+        public readonly RepositoryContext context;
         public LogicUserDB()
         {
-            context = new RespositoryContext();
+            context = new RepositoryContext();
         }
         // validate username and password...
         public bool ValidLogin()
