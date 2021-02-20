@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP Model", "..\SAP Model\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP Web", "..\SAP Web\SAP Web.csproj", "{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP BusinessLogic", "SAP BusinessLogic\SAP BusinessLogic.csproj", "{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP BusinessLogic", "SAP BusinessLogic\SAP BusinessLogic.csproj", "{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
