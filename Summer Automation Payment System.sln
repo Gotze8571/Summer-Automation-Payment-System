@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP Model", "..\SAP Model\SAP Model.csproj", "{34BB4DB0-CC39-47DF-92F9-31C0C780C3A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP_BusinessLogic", "SAP BusinessLogic\SAP_BusinessLogic.csproj", "{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP Web", "..\SAP Web\SAP Web.csproj", "{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.API", "SAP.API\SAP.API.csproj", "{8CB472CE-8CDD-4481-B859-C37FBD1CA79F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SAP BusinessLogic", "SAP BusinessLogic\SAP BusinessLogic.csproj", "{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAP.Core", "SAP.Core\SAP.Core.csproj", "{4694606C-CE21-492B-A803-14E728ECBF6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{34BB4DB0-CC39-47DF-92F9-31C0C780C3A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34BB4DB0-CC39-47DF-92F9-31C0C780C3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34BB4DB0-CC39-47DF-92F9-31C0C780C3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34BB4DB0-CC39-47DF-92F9-31C0C780C3A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA87D78A-4C00-4149-BE4E-FE1C8E65C9F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D0342C9-17A7-4B51-9C7A-82D7C8D0CC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CB472CE-8CDD-4481-B859-C37FBD1CA79F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CB472CE-8CDD-4481-B859-C37FBD1CA79F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CB472CE-8CDD-4481-B859-C37FBD1CA79F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CB472CE-8CDD-4481-B859-C37FBD1CA79F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4694606C-CE21-492B-A803-14E728ECBF6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4694606C-CE21-492B-A803-14E728ECBF6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4694606C-CE21-492B-A803-14E728ECBF6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4694606C-CE21-492B-A803-14E728ECBF6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
