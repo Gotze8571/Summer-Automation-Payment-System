@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
@@ -12,6 +13,7 @@ namespace SAP_BusinessLogic.BusinessLogic
         public LogicUserDB()
         {
            // context = new RespositoryContext();
+
         }
         // validate username and password...
         public bool ValidLogin()
