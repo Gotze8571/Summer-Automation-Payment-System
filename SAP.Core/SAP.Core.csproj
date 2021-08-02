@@ -8,4 +8,8 @@
     <Folder Include="DbConnector\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SAP BusinessLogic\SAP_BusinessLogic.csproj" />
+  </ItemGroup>
+
 </Project>
