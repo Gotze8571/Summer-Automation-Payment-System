@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SAP_BusinessLogic.DTOs
 {
-    public class CreateAccountDto
+    public class AccountCreationDto
     {
         public string AccountId { get; set; }
         public string AccountName { get; set; }
