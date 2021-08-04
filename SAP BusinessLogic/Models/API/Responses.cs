@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SAP_BusinessLogic.Models.API
 {
-    public class Responses
-    {
-    }
+    //public class Responses
+    //{
+    //}
 
     //public class GetDocumentTypesResponse : ApiResponse
     //{

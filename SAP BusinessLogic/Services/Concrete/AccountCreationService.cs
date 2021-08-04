@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SAP_BusinessLogic.Services.Concrete
 {
-    public class AcoountCreationService : IAccountCreationService
+    public class AccountCreationService : IAccountCreationService
     {
         public Task<ApiResponse> AccountCreation(AccountCreationDto dto)
         {

@@ -18,6 +18,7 @@ namespace SAP.API.Controllers
     {
         private readonly IUtil _util;
         private readonly IAccountCreationService _accountCreationService;
+        private readonly IGetAccountService _getAccountService;
         public AccountController(IAccountCreationService accountCreationService, IUtil util)
         {
             _accountCreationService = accountCreationService;
@@ -53,7 +54,13 @@ namespace SAP.API.Controllers
 
         // Insert into SAP account endpoint.
 
+
         // Update SAP account endpoint.
+        // PUT
+        public async Task<IActionResult> UpdateSAP_Account()
+        {
+            return null;
+        }
 
         // Get SAP account endpoints.
         public async Task<IActionResult> GetSAP_Account()
@@ -63,11 +70,17 @@ namespace SAP.API.Controllers
                 var error = new ApiResponse() { Code = "400", Description = "One or more input field not correctly passwed/empty" };
                 if (!ModelState.IsValid)
                     return BadRequest(error);
+                var response = await _accountCreationService.AccountCreation(dto);
+
+                var statusCode = _util.GetStatusCode(response.Code);
+
+                return StatusCode(statusCode, response);
 
                 //var response = await _
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
             return null;
