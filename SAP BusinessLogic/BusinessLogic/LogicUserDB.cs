@@ -18,8 +18,8 @@ namespace SAP_BusinessLogic.BusinessLogic
         // validate username and password...
         public bool ValidLogin()
         {
-            var appId = ConfigurationManager.AppSettings["AppID"];
-            var appKey = ConfigurationManager.AppSettings["AppKey"];
+            //var appId = ConfigurationManager.AppSettings["AppID"];
+            //var appKey = ConfigurationManager.AppSettings["AppKey"];
             bool isValidUser = false;
             int thisUserId = 0;
             try

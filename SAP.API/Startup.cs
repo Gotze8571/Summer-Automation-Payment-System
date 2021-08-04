@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SAP.Core.Respositories.Concrete;
+using SAP.Core.Respositories.Interface;
+using SAP_BusinessLogic.DTOs;
+using SAP_BusinessLogic.Extensions;
+using SAP_BusinessLogic.Helpers;
 using SAP_BusinessLogic.Models.Database.Logs;
 using System;
 using System.Collections.Generic;
@@ -39,6 +45,16 @@ namespace SAP.API
             services.AddDbContext<ApplicationDbContext>(options =>
            options.UseSqlServer(
            Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("SAP_BusinessLogic")));
+
+            // Register Dapper Dependencies
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            // Register Repositories
+            services.AddScoped<IAccountCreationRepo, AccountCreationRepo>();
+
+            // Register Helpers
+            services.AddScoped<IUtil, Util>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +71,7 @@ namespace SAP.API
 
             app.UseRouting();
 
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

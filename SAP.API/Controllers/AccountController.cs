@@ -24,11 +24,11 @@ namespace SAP.API.Controllers
             _util = util;
         }
         
-        // Create account endpoint.
+        // Create SAP account endpoint.
         [HttpPost]
         //[ValidateModel]
         [Route("CreateSAPAccount")]
-        public async Task<IActionResult> CreateSAPAccount(AccountCreationDto dto)
+        public async Task<IActionResult> CreateSAP_Account(AccountCreationDto dto)
         {
             try
             {
@@ -51,13 +51,29 @@ namespace SAP.API.Controllers
             }
         }
 
-        // Insert into account endpoint.
+        // Insert into SAP account endpoint.
 
-        // Update account endpoint.
+        // Update SAP account endpoint.
 
-        // Get account endpoints.
+        // Get SAP account endpoints.
+        public async Task<IActionResult> GetSAP_Account()
+        {
+            try
+            {
+                var error = new ApiResponse() { Code = "400", Description = "One or more input field not correctly passwed/empty" };
+                if (!ModelState.IsValid)
+                    return BadRequest(error);
 
-        // Delete account endpoint.
+                //var response = await _
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return null;
+        }
+
+        // Delete SAP account endpoint.
         
     }
 }
