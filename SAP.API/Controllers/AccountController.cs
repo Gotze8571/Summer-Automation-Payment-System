@@ -67,12 +67,13 @@ namespace SAP.API.Controllers
         {
             try
             {
+                string responseCode = "";
                 var error = new ApiResponse() { Code = "400", Description = "One or more input field not correctly passwed/empty" };
                 if (!ModelState.IsValid)
                     return BadRequest(error);
-                var response = await _accountCreationService.AccountCreation(dto);
+                var response = await _accountCreationService.GetAccountCreation();
 
-                var statusCode = _util.GetStatusCode(response.Code);
+                var statusCode = _util.GetStatusCode(responseCode);
 
                 return StatusCode(statusCode, response);
 
