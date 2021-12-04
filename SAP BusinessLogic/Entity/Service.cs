@@ -9,11 +9,12 @@ namespace SAP_BusinessLogic.Entity
     public class Service
     {
         [Key]
-        public int ServiceID { get; set; }
+        public Guid ServiceID { get; set; }
         public string Service_Name { get; set; }
         public string Service_Type { get; set; }
         public string Service_Rate { get; set; }
         public DateTime Service_TimeStamp { get; set; }
-        public int OrderId { get; set; }
+        public Order Service_Order { get; set; }
+
     }
 }

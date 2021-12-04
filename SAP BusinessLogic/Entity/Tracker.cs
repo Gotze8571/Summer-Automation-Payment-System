@@ -8,10 +8,14 @@ namespace SAP_BusinessLogic.Entity
     public class Tracker
     {
         [Key]
-        public int TrackerID { get; set; }
+        public Guid TrackerID { get; set; }
         public string Tracker_Name { get; set; }
         public string Tracker_Type { get; set; }
-        public DateTime Tracker_Created_Date { get; set; }
+        public Order Order_Number { get; set; }
+        public Customer Customer_Address { get; set; }
+        public Service Service_Type { get; set; }
+        public Product Product_Type { get; set; }
+        public DateTime Tracker_Date { get; set; }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SAP_BusinessLogic.DTOs;
 using SAP_BusinessLogic.Helpers;
 using SAP_BusinessLogic.Models;
@@ -16,6 +17,7 @@ namespace SAP.API.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+        private ILogger<BillersController> logger;
         private readonly IUtil _util;
         private readonly IAccountCreationService _accountCreationService;
         private readonly IGetAccountService _getAccountService;
@@ -63,7 +65,9 @@ namespace SAP.API.Controllers
         }
 
         // Get SAP account endpoints.
-        public async Task<IActionResult> GetSAP_Account()
+        [HttpGet]
+        //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MySapAcc>))]
+        public async Task<ActionResult> GetSAP_Account()
         {
             try
             {

@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SAP BusinessLogic\SAP_BusinessLogic.csproj" />
+    <ProjectReference Include="..\SAP BusinessLogic\SAP.Core.csproj" />
   </ItemGroup>
 
 </Project>

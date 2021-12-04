@@ -14,5 +14,10 @@ namespace SAP_BusinessLogic.Services.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public Task<AccountCreationDto> GetAccountCreation()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

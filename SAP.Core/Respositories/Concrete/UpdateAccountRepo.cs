@@ -9,8 +9,13 @@ using System.Threading.Tasks;
 
 namespace SAP.Domain.Respositories.Concrete
 {
-    public class AccountCreationRepo : IAccountCreationRepo
+    public class UpdateAccountRepo : IAccountCreationRepo
     {
+       
+        public UpdateAccountRepo()
+        {
+
+        }
         public Task<ApiResponse> AccountCreation(AccountCreationDto dto)
         {
             throw new NotImplementedException();
