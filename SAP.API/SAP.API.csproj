@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SAP BusinessLogic\SAP.Core.csproj" />
     <ProjectReference Include="..\SAP.Core\SAP.Domain.csproj" />
   </ItemGroup>
 

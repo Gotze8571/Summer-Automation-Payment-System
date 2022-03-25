@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using SAP.Core.Respositories.Concrete;
 using SAP.Core.Respositories.Interface;
 using SAP.Domain.Respositories.Concrete;
 using SAP_BusinessLogic.DTOs;
@@ -73,7 +72,7 @@ namespace SAP.API
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("./v1/swagger.json", "SAP.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("swagger/v1/swagger.json", "SAP.API v1"));
 
             app.UseHttpsRedirection();
 

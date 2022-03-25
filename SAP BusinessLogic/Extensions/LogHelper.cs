@@ -16,13 +16,13 @@ namespace SAP_BusinessLogic.Extensions
     {
         public static string RequestPayload = "";
 
-        public static async void EnrichFromRequest(IDiagnosticContext diagnosticContext, HttpContext context)
+        public static async void EnrichFromRequest(IDiagnosticContext diagnosticContext, HttpContext httpContext)
         {
-            var request = context.Request;
+            var request = httpContext.Request;
 
             diagnosticContext.Set("RequestBody", RequestPayload);
 
-            string reponseBodyPayload = await ReadResponseBody(context.Response);
+            string reponseBodyPayload = await ReadResponseBody(httpContext.Response);
             diagnosticContext.Set("ResponseBody", reponseBodyPayload);
             ApiResponse responseBody = (ApiResponse)JsonConvert.DeserializeObject(reponseBodyPayload, typeof(ApiResponse));
 
@@ -44,15 +44,15 @@ namespace SAP_BusinessLogic.Extensions
             }
 
             // Set the content-type of the Response at the point
-            diagnosticContext.Set("ContentType", context.Response.ContentType);
+            diagnosticContext.Set("ContentType", httpContext.Response.ContentType);
 
             // Retrieve the IEndpointFeature selected for the request
-            //var endpoint = context.GetEndpoint();
-            //if (endpoint is object) // endpoint != null;
-            //{
-            //    diagnosticContext.Set("EndpointName", endpoint.DisplayName);
-            //}
-            var clientId = context.Request.Headers["client_id"];
+            var endpoint = httpContext.GetEndpoint();
+            if (endpoint is object) // endpoint != null;
+            {
+                diagnosticContext.Set("EndpointName", endpoint.DisplayName);
+            }
+            var clientId = httpContext.Request.Headers["client_id"];
 
             diagnosticContext.Set("ClientId", clientId);
 
@@ -66,7 +66,7 @@ namespace SAP_BusinessLogic.Extensions
             {
                 string headerProductId = string.Empty;
 
-                var prodKey = context.Request.Headers.Keys.FirstOrDefault(n => n.ToLower().Equals("product_id"));
+                var prodKey = httpContext.Request.Headers.Keys.FirstOrDefault(n => n.ToLower().Equals("product_id"));
                 if (!string.IsNullOrWhiteSpace(prodKey))
                 {
                     diagnosticContext.Set("productId", productIdRes.productId);
