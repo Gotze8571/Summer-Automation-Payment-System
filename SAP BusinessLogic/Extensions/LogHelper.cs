@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using SAP_BusinessLogic.Models;
 using SAP_BusinessLogic.Models.API;
+using SAP_BusinessLogic.Models.Database.Logs;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace SAP_BusinessLogic.Extensions
     public class LogHelper
     {
         public static string RequestPayload = "";
+        private readonly ApplicationDbContext context;
 
         public static async void EnrichFromRequest(IDiagnosticContext diagnosticContext, HttpContext httpContext)
         {
@@ -47,11 +49,12 @@ namespace SAP_BusinessLogic.Extensions
             diagnosticContext.Set("ContentType", httpContext.Response.ContentType);
 
             // Retrieve the IEndpointFeature selected for the request
-            var endpoint = httpContext.GetEndpoint();
-            if (endpoint is object) // endpoint != null;
-            {
-                diagnosticContext.Set("EndpointName", endpoint.DisplayName);
-            }
+           // var endpoint = httpContext.GetEndpoint();
+            var endpoint = "";
+            //if (endpoint is object) // endpoint != null;
+            //{
+            //    diagnosticContext.Set("EndpointName", endpoint.DisplayName);
+            //}
             var clientId = httpContext.Request.Headers["client_id"];
 
             diagnosticContext.Set("ClientId", clientId);
@@ -75,18 +78,18 @@ namespace SAP_BusinessLogic.Extensions
                 {
                     string correlationId = string.Empty;
 
-                    var key = context.Request.Headers.Keys.FirstOrDefault(p => p.ToLower().Equals("x-correlationId"));
-                    if (!string.IsNullOrWhiteSpace(key))
-                    {
-                        correlationId = context.Request.Headers[key];
-                    }
-                    else
-                    {
-                        correlationId = Guid.NewGuid().ToString();
-                    }
-                    diagnosticContext.Set("CorrelationId", correlationId);
-                    diagnosticContext.Set("ClientId", context.Connection.RemoteIpAddress.ToString());
-                    context.Response.Headers.Append("x-correlation-id", correlationId);
+                    //var key = context.Request.Headers.Keys.FirstOrDefault(p => p.ToLower().Equals("x-correlationId"));
+                    //if (!string.IsNullOrWhiteSpace(key))
+                    //{
+                    //    correlationId = context.Request.Headers[key];
+                    //}
+                    //else
+                    //{
+                    //    correlationId = Guid.NewGuid().ToString();
+                    //}
+                    //diagnosticContext.Set("CorrelationId", correlationId);
+                    //diagnosticContext.Set("ClientId", context.Connection.RemoteIpAddress.ToString());
+                    //context.Response.Headers.Append("x-correlation-id", correlationId);
                 }
             }
         }

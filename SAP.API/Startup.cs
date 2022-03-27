@@ -11,11 +11,14 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SAP.Core.Respositories.Interface;
+using SAP.Domain.Configuration;
 using SAP.Domain.Respositories.Concrete;
 using SAP_BusinessLogic.DTOs;
 using SAP_BusinessLogic.Extensions;
 using SAP_BusinessLogic.Helpers;
 using SAP_BusinessLogic.Models.Database.Logs;
+using SAP_BusinessLogic.Services.Concrete;
+using SAP_BusinessLogic.Services.Interface;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -38,6 +41,16 @@ namespace SAP.API
         {
 
             services.AddControllers();
+
+            // Add functionality to inject IOptions<T>
+            services.AddOptions();
+
+            // Add our Config object so it can be injected
+            services.Configure<SAPConfig>(Configuration.GetSection("SAP"));
+
+            // Add service health check
+            services.AddHealthChecks();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SAP.API", Version = "v1" });
@@ -56,6 +69,15 @@ namespace SAP.API
             // Register Repositories
             services.AddScoped<IAccountCreationRepo, AccountCreationRepo>();
 
+
+            // Register Services
+            services.AddTransient<IAccountSetupService, AccountSetupService>();
+            //services.AddTransient<ICategoriesRepository, CategoriesRepository>();
+            //services.AddTransient<IQtResponseRepository, QtResponseRepository>();
+            //services.AddTransient<IPaymentItemsRepository, PaymentItemsRepository>();
+            //services.AddTransient<IPageFlowInfoRepository, PageFlowInfoRepository>();
+
+
             // Register Helpers
             services.AddScoped<IUtil, Util>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -67,19 +89,25 @@ namespace SAP.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseHttpsRedirection();
                 //app.UseSwagger();
                 //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SAP.API v1"));
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("swagger/v1/swagger.json", "SAP.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SAP.API v1"));
 
-            app.UseHttpsRedirection();
+            
 
             app.UseRouting();
 
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
             app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHealthChecks("/health");
+            });
 
             app.UseEndpoints(endpoints =>
             {

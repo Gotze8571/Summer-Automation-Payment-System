@@ -19,9 +19,9 @@ namespace SAP.API.Controllers
     {
         private ILogger<BillersController> logger;
         private readonly IUtil _util;
-        private readonly IAccountCreationService _accountCreationService;
-        private readonly IGetAccountService _getAccountService;
-        public AccountController(IAccountCreationService accountCreationService, IUtil util)
+        private readonly IAccountSetupService _accountCreationService;
+       
+        public AccountController(IAccountSetupService accountCreationService, IUtil util)
         {
             _accountCreationService = accountCreationService;
             _util = util;
@@ -59,15 +59,18 @@ namespace SAP.API.Controllers
 
         // Update SAP account endpoint.
         // PUT
-        public async Task<IActionResult> UpdateSAP_Account()
+        [HttpPut]
+        [Route("Update-Account")]
+        public async Task<IActionResult> UpdateSAP_Account(AccountCreationDto update)
         {
             return null;
         }
 
         // Get SAP account endpoints.
         [HttpGet]
+        [Route("Get-Account")]
         //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MySapAcc>))]
-        public async Task<ActionResult> GetSAP_Account()
+        public async Task<ActionResult> GetAccount()
         {
             try
             {
