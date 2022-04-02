@@ -55,12 +55,37 @@ namespace SAP.API.Controllers
         }
 
         // Insert into SAP account endpoint.
+        [HttpPost]
+        //[ValidateModel]
+        [Route("Deposit-Account")]
+        public async Task<IActionResult> DepositSAP_Account(AccountCreationDto dto)
+        {
+            try
+            {
+                var error = new ApiResponse() { Code = "400", Description = "One or more input field not correctly passed/empty" };
+                if (!ModelState.IsValid)
+                    return BadRequest(error);
+                var response = await _accountCreationService.AccountCreation(dto);
 
+                var statusCode = _util.GetStatusCode(response.Code);
+
+                return StatusCode(statusCode, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new ApiResponse()
+                {
+                    Code = "96",
+                    Description = "System malfunction"
+
+                });
+            }
+        }
 
         // Update SAP account endpoint.
         // PUT
         [HttpPut]
-        [Route("Update-Account")]
+        [Route("Update-Account-Details")]
         public async Task<IActionResult> UpdateSAP_Account(AccountCreationDto update)
         {
             return null;
@@ -68,7 +93,7 @@ namespace SAP.API.Controllers
 
         // Get SAP account endpoints.
         [HttpGet]
-        [Route("Get-Account")]
+        [Route("Get-Account-Details")]
         //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MySapAcc>))]
         public async Task<ActionResult> GetAccount()
         {

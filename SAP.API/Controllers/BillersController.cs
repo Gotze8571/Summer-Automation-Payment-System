@@ -41,5 +41,41 @@ namespace SAP.API.Controllers
         }
 
         // Post: Create Billers / Merchants
+        [HttpPost("Create-Billers")]
+        public async Task<ActionResult> CreateBillersAsync()
+        {
+            var response = await _repository.FindAllAsync();
+            try
+            {
+                if (response != null)
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
+
+        // GET: api/values
+        [HttpGet("Get-Billers-Commision")]
+        public async Task<ActionResult> ListCommision()
+        {
+            var response = await _repository.FindAllAsync();
+            try
+            {
+                if (response != null)
+                {
+
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return null;
+        }
     }
 }

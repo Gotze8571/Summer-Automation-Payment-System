@@ -10,6 +10,8 @@ namespace SAP_BusinessLogic.Services.Interface
     public interface IAccountSetupService
     {
         Task<ApiResponse> AccountCreation(AccountCreationDto dto);
+
+        Task<ApiResponse> DepositAccount(AccountCreationDto dto);
         Task<AccountCreationDto> GetAccountCreation();
         
     }
