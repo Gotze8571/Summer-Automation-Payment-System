@@ -90,12 +90,12 @@ namespace SAP.API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseHttpsRedirection();
-                //app.UseSwagger();
-                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SAP.API v1"));
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("../swagger/v1/swagger.json", "SAP.API v1"));
             }
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("../v1/swagger.json", "SAP.API v1"));
+            //app.UseSwagger();
+            //app.UseSwaggerUI(c => c.SwaggerEndpoint("../v1/swagger.json", "SAP.API v1"));
 
             
 
