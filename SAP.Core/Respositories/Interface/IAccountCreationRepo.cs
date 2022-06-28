@@ -11,5 +11,6 @@ namespace SAP.Core.Respositories.Interface
     public interface IAccountCreationRepo
     {
         Task<ApiResponse> AccountCreation(AccountCreationDto dto);
+        Task<>
     }
 }

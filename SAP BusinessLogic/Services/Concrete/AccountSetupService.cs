@@ -10,6 +10,7 @@ namespace SAP_BusinessLogic.Services.Concrete
 {
     public class AccountSetupService : IAccountSetupService
     {
+        private readonly IAccountSetupRepo _repo;
         public Task<ApiResponse> AccountCreation(AccountCreationDto dto)
         {
             throw new NotImplementedException();
@@ -20,7 +21,7 @@ namespace SAP_BusinessLogic.Services.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<AccountCreationDto> GetAccountCreation()
+        public Task<AccountCreationDto> GetAccountCreation(string AccountNo)
         {
             throw new NotImplementedException();
         }

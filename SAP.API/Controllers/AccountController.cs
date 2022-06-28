@@ -30,7 +30,7 @@ namespace SAP.API.Controllers
         // Create SAP account endpoint.
         [HttpPost]
         //[ValidateModel]
-        [Route("CreateSAPAccount")]
+        [Route("OpenAccount")]
         public async Task<IActionResult> CreateSAP_Account(AccountCreationDto dto)
         {
             try
@@ -58,7 +58,7 @@ namespace SAP.API.Controllers
         [HttpPost]
         //[ValidateModel]
         [Route("Deposit-Account")]
-        public async Task<IActionResult> DepositSAP_Account(AccountCreationDto dto)
+        public async Task<IActionResult> DepositAccount(AccountCreationDto dto)
         {
             try
             {
@@ -82,8 +82,9 @@ namespace SAP.API.Controllers
             }
         }
 
+        // 
+
         // Update SAP account endpoint.
-        // PUT
         [HttpPut]
         [Route("Update-Account-Details")]
         public async Task<IActionResult> UpdateSAP_Account(AccountCreationDto update)
@@ -95,7 +96,7 @@ namespace SAP.API.Controllers
         [HttpGet]
         [Route("Get-Account-Details")]
         //[ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MySapAcc>))]
-        public async Task<ActionResult> GetAccount()
+        public async Task<ActionResult> GetAccount(string AccountNo)
         {
             try
             {
@@ -103,7 +104,7 @@ namespace SAP.API.Controllers
                 var error = new ApiResponse() { Code = "400", Description = "One or more input field not correctly passwed/empty" };
                 if (!ModelState.IsValid)
                     return BadRequest(error);
-                var response = await _accountCreationService.GetAccountCreation();
+                var response = await _accountCreationService.GetAccountCreation(AccountNo);
 
                 var statusCode = _util.GetStatusCode(responseCode);
 
